@@ -1,0 +1,35 @@
+{
+    "require": {
+        "php": "^7.2",
+        "symfony/yaml": "^5.0",
+        "phpstan/phpstan": "~0.12.86"
+    },
+    "autoload": {
+        "psr-4":{
+            "Cart\\" : "module/Cart/src",
+            "Core\\" : "module/Core/src",
+            "Custom\\": "module/Custom/src",
+            "Application\\" : "module/Application/src",
+            "Domain\\" : "module/Domain/src",
+            "Product\\" : "module/Product/src",
+            "Discount\\" : "module/Discount/src"
+        }
+    },
+    "extra": [],
+    "scripts": {
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+         "post-create-project-cmd": [
+            "@development-enable"
+        ],
+        "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "test": "phpunit"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.2",
+        "phploc/phploc": "^4.0",
+        "squizlabs/php_codesniffer": "^3.4",
+        "sebastian/phpcpd": "^4.1",
+        "phpunit/phpunit": "^7.5"
+    }
+}
