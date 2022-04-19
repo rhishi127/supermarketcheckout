@@ -4,9 +4,6 @@
 
     $appConfig = require __DIR__ . '/config/application.config.php';
 
-/*    error_reporting(self::$discount_temp_array);
-    ini_set('display_errors', 1);*/
-
 use Custom\ApplicationMain;
 
 try {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="Bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="discount">
+            <directory>../module/Discount/tests</directory>
+        </testsuite>
+        <testsuite name="product">
+            <directory>../module/Product/tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../module/Discount/src</directory>
+            <directory suffix=".php">../module/Product/src/</directory>
+            <exclude>
+                <directory suffix=".html">../module/Discount/src</directory>
+                <directory suffix=".html">../module/Product/src/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

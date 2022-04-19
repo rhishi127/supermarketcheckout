@@ -20,6 +20,7 @@ class DiscountService implements IDiscountService
 
     public function decorateWithDiscountValues(array $cartArray)
     {
+        $total = 0;
         $productCount = count($cartArray['product_keys']);
         if ($productCount == 1) {
             $productId = $cartArray['product_ids'][0];
@@ -43,6 +44,10 @@ class DiscountService implements IDiscountService
             $cartItemsArray = $this->calculateQtyAndConditionDiscount($cartArray['items']);
             $cartArray['items'] = $cartItemsArray;
         }
+        foreach ($cartArray['items'] as $item) {
+            $total += $item['sub_total'];
+        }
+        $cartArray['cart_total'] = $total;
         return $cartArray;
     }
 
@@ -98,17 +103,17 @@ class DiscountService implements IDiscountService
                     return $quantity * $productPrice;
                 }
                 if ($quantity > $offer['min_qty']) {
-                    $closetQuantity = $this->findClosest($quantitiesArray,count($quantitiesArray), $quantity);
+                    $closetQuantity = $this->findClosest($quantitiesArray, count($quantitiesArray), $quantity);
                     $offerKey = array_search($closetQuantity, $quantitiesArray);
                     $discountOffer = $offers[$offerKey];
                     $discountOfferQuantity = $discountOffer['min_qty'];
                     $discountOfferAmount = $discountOffer['discount_amt'];
                     $remainingQty = $quantity - $discountOfferQuantity;
                     $discountAmount = $discountOfferAmount + $this->calculateSingleQtyDiscount(
-                            $remainingQty,
-                            $offers,
-                            $productPrice
-                        );
+                        $remainingQty,
+                        $offers,
+                        $productPrice
+                    );
                     return $discountAmount;
                 }
             }
@@ -134,26 +139,30 @@ class DiscountService implements IDiscountService
 
     private function findClosest($arr, $n, $target)
     {
-        if ($target <= $arr[0])
+        if ($target <= $arr[0]) {
             return $arr[0];
-        if ($target >= $arr[$n - 1])
+        }
+        if ($target >= $arr[$n - 1]) {
             return $arr[$n - 1];
+        }
         $i = 0;
         $j = $n;
         $mid = 0;
         while ($i < $j) {
             $mid = ($i + $j) / 2;
-            if ($arr[$mid] == $target)
+            if ($arr[$mid] == $target) {
                 return $arr[$mid];
-            if ($target < $arr[$mid]) {
-                if ($mid > 0 && $target > $arr[$mid - 1])
-                    return $this->getClosest($arr[$mid - 1], $arr[$mid], $target);
-                $j = $mid;
             }
-            else {
+            if ($target < $arr[$mid]) {
+                if ($mid > 0 && $target > $arr[$mid - 1]) {
+                    return $this->getClosest($arr[$mid - 1], $arr[$mid], $target);
+                }
+                $j = $mid;
+            } else {
                 if ($mid < $n - 1 &&
-                    $target < $arr[$mid + 1])
+                    $target < $arr[$mid + 1]) {
                     return $this->getClosest($arr[$mid], $arr[$mid + 1], $target);
+                }
                 $i = $mid + 1;
             }
         }
@@ -162,11 +171,10 @@ class DiscountService implements IDiscountService
 
     function getClosest($val1, $val2, $target)
     {
-        if ($val1 <= $target && $val2 > $target )  {
+        if ($val1 <= $target && $val2 > $target) {
             return $val1;
         } else {
             return $val2;
         }
-
     }
 }

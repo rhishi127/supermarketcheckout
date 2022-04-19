@@ -3,6 +3,7 @@
 namespace Domain\Repository\Discount;
 
 use Core\Domain\Repository\Discount\IProductDiscountRepository;
+use Domain\Entity\ResultEntity;
 use Domain\Query\Discount\ProductDiscountQueryMapper;
 
 class ProductDiscountRepository implements IProductDiscountRepository
@@ -25,7 +26,7 @@ class ProductDiscountRepository implements IProductDiscountRepository
      * @param string $discountType
      * @return \Domain\Entity\ResultEntity
      */
-    public function getProductQtyDiscountByProductIdAndDiscountType(int $productId, string $discountType)
+    public function getProductQtyDiscountByProductIdAndDiscountType(int $productId, string $discountType) : ResultEntity
     {
         return $this->product_discount_query_mapper
             ->getProductQtyDiscountByProductIdAndDiscountType($productId, $discountType);
@@ -37,7 +38,7 @@ class ProductDiscountRepository implements IProductDiscountRepository
      * @param array $productIdArray
      * @return \Domain\Entity\ResultEntity
      */
-    public function getProductDiscountOffersByProductIdArray(array $productIdArray)
+    public function getProductDiscountOffersByProductIdArray(array $productIdArray) : ResultEntity
     {
         return $this->product_discount_query_mapper
             ->getProductDiscountOffersByProductIdArray($productIdArray);

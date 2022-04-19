@@ -41,12 +41,14 @@ class ComposerStaticInit9106b0e7d19a070f73c7bea1ffe10289
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
             'Product\\' => 8,
+            'ProductTest\\' => 12,
         ),
         'D' => 
         array (
             'Domain\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'Discount\\' => 9,
+            'DiscountTest\\' => 13,
             'DeepCopy\\' => 9,
         ),
         'C' => 
@@ -116,6 +118,10 @@ class ComposerStaticInit9106b0e7d19a070f73c7bea1ffe10289
         array (
             0 => __DIR__ . '/../..' . '/module/Product/src',
         ),
+        'ProductTest\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/module/Product/test/ProductTest',
+        ),
         'Domain\\' => 
         array (
             0 => __DIR__ . '/../..' . '/module/Domain/src',
@@ -127,6 +133,10 @@ class ComposerStaticInit9106b0e7d19a070f73c7bea1ffe10289
         'Discount\\' => 
         array (
             0 => __DIR__ . '/../..' . '/module/Discount/src',
+        ),
+        'DiscountTest\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/module/Discount/test/DiscountTest',
         ),
         'DeepCopy\\' => 
         array (

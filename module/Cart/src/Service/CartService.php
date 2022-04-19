@@ -11,7 +11,7 @@ if (!session_id()) {
 
 class CartService
 {
-    protected $cart_contents = [];
+    public $cart_contents = [];
 
     protected $product_service;
 
@@ -138,9 +138,9 @@ class CartService
                 $this->cart_contents['items'][$key]['product_price'] * $this->cart_contents['items'][$key]['qty']
             );
         }
-           $this->cart_contents = $this->discount_service->decorateWithDiscountValues(
-               $this->cart_contents
-           );
+        $this->cart_contents = $this->discount_service->decorateWithDiscountValues(
+            $this->cart_contents
+        );
         if (count($this->cart_contents) <= 2) {
             unset($_SESSION['cart']);
             return false;

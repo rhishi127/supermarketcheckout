@@ -15,6 +15,12 @@
             "Discount\\" : "module/Discount/src"
         }
     },
+    "autoload-dev": {
+        "psr-4":{
+            "DiscountTest\\" : "module/Discount/test/DiscountTest/",
+            "ProductTest\\" : "module/Product/test/ProductTest/"
+        }
+    },
     "extra": [],
     "scripts": {
         "cs-check": "phpcs",
