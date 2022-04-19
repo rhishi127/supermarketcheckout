@@ -9,7 +9,7 @@ Supermarket Checkout Assignment
 5. Ajax used for cart activity
 6. Unit TestCase and database migration also created 
 7. Project flow 
-    1. http://localhost:85/ShoppingKartAssignment/ (Listed All projects)
+    1. host/ShoppingKartAssignment/ (Listed All projects)
     2. Click On add to cart -> redirects to view cart page 
     3. Modify quantity and avail discount if available 
     4. To add other product click on Continue Shopping button which redirects to all All products page 
